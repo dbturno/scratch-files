@@ -1,0 +1,53 @@
+AWS Lambda Demo
+AWS Lambda is a platform for serverless computing
+
+Create project
+	name: lambda-demo
+	java-11
+	maven-archetype-quickstart
+	dev.dbt
+	
+Setup pom
+	<maven.compiler.source>11
+	<maven.compiler.target>11
+	
+	<dependencies>
+	<dependency>junit-jupiter
+	<version>5.8.2
+	<scope>test
+
+Remove Auto created classes
+
+Create new Class
+
+public class LambdaDemo {
+	public String handleRequest() {
+		return "Lambda Demo";
+	}
+}
+
+Create Test
+public class LambdaDemoTest {
+
+	@Test
+	public void testHandleRequest() {
+		var sut = new LambdaDemo();
+		Assertions.assertEquals("Lambda Demo", sut.handleRequest());
+	}
+}
+
+Build project
+Add maven shade plugin on pom
+msp
+
+mvn clean package
+
+Create Lambda function
+Go to AWS > Lambda
+Create function
+Java 11
+arm64
+Upload from file
+
+Runtime Settings > Edit
+dev.dbt.LamdaDemo::handleRequest
